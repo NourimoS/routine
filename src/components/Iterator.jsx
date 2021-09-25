@@ -1,11 +1,10 @@
 import React from 'react'
 
-const Iterator = ({data,children,...rest}) =>{
+const Iterator = ({data,renderAs,...rest}) =>{
     return (
         <>
             {
-
-        data.map((el,i)=>(<div  key={i}>{children({el,i})}</div>))
+                data.map((el,i)=>renderAs({el,i}))
             }
         </>
         
