@@ -1,14 +1,21 @@
 import React from 'react'
+import RoundedButton from './RoundedButton'
 
 const NewItem = ({onAddNew}) => {
     return (
-        <button onClick={onAddNew} className="mr-4 p-1  text-center border-8 border-blue-300 rounded-full cursor-pointer ">
-            <div className="px-6 py-2 w-max bg-white rounded-full">
+        <li className="mr-4">
+        <RoundedButton
+        onClick={onAddNew}
+        bgColor="bg-white"
+        borderColor="border-blue-300"
+        >
             <p className="text-3xl text-gray-700">+</p>
             <p className="text-sm text-gray-400" >new</p>
             
-            </div>            
-        </button>
+
+        </RoundedButton>
+        
+        </li>
     )
 }
 
