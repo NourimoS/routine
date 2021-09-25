@@ -6,20 +6,24 @@ module.exports = {
       keyframes:{
         slide:{
           "0%":{
-            transform:'translateX(100vw)',
+            transform:'translateX(100%)',
           },
           "100%":{
-            transform:'translateX(-120%)',
+            transform:'translateX(-100%)',
           }
-        }
+        },
+        
       },
       animation:{
-        slide:"slide linear infinite backwards"
+        slide:"slide linear infinite backwards",
+        
       }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      animation:['hover','focus']
+    },
   },
   plugins: [],
 }
