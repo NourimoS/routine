@@ -18,13 +18,12 @@ const MyRoutine = ({routines,setRoutines,onAddNew}) => {
     return (
         <>
             <h3 className=" py-6 text-4xl">My routine</h3>
-            <div className="flex py-4 w-full overflow-x-scroll">
+            <ul className="flex py-4 w-full overflow-x-scroll">
 
             <NewItem onAddNew={onAddNew}></NewItem>
-            <Iterator  data={routines}>
-                {({el,i})=>(<RoutineItem onSetDone={()=>setDone(i)} {...el}  ></RoutineItem>)}
+            <Iterator  data={routines} renderAs={({el,i})=>(<RoutineItem onSetDone={()=>setDone(i)} key={el.id}  {...el}  ></RoutineItem>)}>
             </Iterator>
-            </div>
+            </ul>
             
         </>
     )
