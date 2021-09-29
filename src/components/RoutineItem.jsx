@@ -4,11 +4,11 @@ import RoundedButton from "./RoundedButton";
 const RoutineItem = ({id,  name, times, done, onSetDone}) => {
   const nameLength = name.split(' ').length;
   return (
-    <li className="mr-4" key={id} >
+    <li className="me-4" key={id} >
       <RoundedButton
       borderColor={done
         ? "border-gray-300 cursor-not-allowed"
-        : "border-green-300"}
+        : "border-blue-400"}
       bgColor={'bg-white'}
       onClick={onSetDone}
       >

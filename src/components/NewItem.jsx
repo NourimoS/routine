@@ -3,7 +3,7 @@ import RoundedButton from './RoundedButton'
 
 const NewItem = ({onAddNew}) => {
     return (
-        <li className="mr-4">
+        <li className="me-4">
         <RoundedButton
         onClick={onAddNew}
         bgColor="bg-white"

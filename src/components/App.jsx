@@ -7,7 +7,8 @@ import RecentSuccess from './RecentSuccess.jsx'
 const App = () => {
     const topData = {
         title: "finish the annual brief",
-        timeToFinish: Date.now()+15000
+        timeToFinish: 1632811929780,
+        get startValue(){return this.timeToFinish-Date.now()}
     }
     const initialRoutines = [{
         id:1,
@@ -16,12 +17,12 @@ const App = () => {
         done:false,
     },{
         id:2,
-        name:'books',
+        name:'15mn book read',
         times:5,
         done:true,
     },{
         id:3,
-        name:'social',
+        name:'talk to a stranger',
         times:3,
         done:false,
     },{
@@ -30,6 +31,35 @@ const App = () => {
         times:7,
         done:true
     }];
+
+    const initialRecentSuccess = [
+        {
+        id:0,
+        name:'Total',
+        score: 10
+    },
+    {
+        id:3,
+        name:'finish a book',
+        score: 1
+    },
+    {
+        id:4,
+        name:'have a cold shower',
+        score: 2
+    },
+    {
+        id:22,
+        name:'make a new relationship',
+        score: 5
+    },
+    {
+        id:11,
+        name:'serve a person',
+        score: 2
+    },
+]
+
     const [routines, setRoutines] = useState(initialRoutines);
     const [openModel, setShowOverlay] = useState(false)
     const [hideTopProp, setHideTopProp] = useState(false)
@@ -54,14 +84,23 @@ const App = () => {
     const cancelCreation=e=>{
         setShowOverlay(false)
     }
+    const setDone= (index)=>{
+        let copy =[...routines];
+        if(!copy[index].done){
+        copy[index].done= true;
+        copy[index].times++;
+        
+        setRoutines(copy);
+        }
+    }
     return (
         <>
-            <MyRoutine routines={routines} setRoutines={setRoutines} onAddNew={()=>setShowOverlay(true)}></MyRoutine>
-            <TopPriorite onSetDone={()=>setHideTopProp(true)} done={hideTopProp} {...topData}></TopPriorite>
+            <MyRoutine routines={routines} setDone={setDone} onAddNew={()=>setShowOverlay(true)}></MyRoutine>
+            <TopPriorite onSetFinished={()=>setHideTopProp(true)} done={hideTopProp} {...topData}></TopPriorite>
             {openModel&&(<Overlay onClose={()=>setShowOverlay(false)} >
                 <NewHabitForm onCreate={(e)=>createNewRoutine(e)} onCancel={e=>cancelCreation(e)}></NewHabitForm>
             </Overlay>)}
-            <RecentSuccess data={[1,2,3]}></RecentSuccess>
+            <RecentSuccess data={initialRecentSuccess}></RecentSuccess>
         </>
     )
 }
