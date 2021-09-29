@@ -1,8 +1,8 @@
 import React from "react";
-// import CountDown from './CountDown'
 import Countdown from "react-countdown";
 import countDownRender from "./countDownRender";
-// import RoundedButton from './RoundedButton';
+import {FaHourglassHalf} from "react-icons/fa"
+import Title from "./Title";
 
 const TopPriorite = ({
 	title,
@@ -17,7 +17,7 @@ const TopPriorite = ({
 		<>
 			{!done && (
                 <div>
-                    <h3 className="text-4xl mb-8">One shoot</h3>
+                    <Title text="One shoot" icon={FaHourglassHalf} />
                     <div className="w-full flex items-center  overflow-hidden">
                         <Countdown
                             className="text-2xl py-2"
